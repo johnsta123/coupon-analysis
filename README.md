@@ -1,5 +1,6 @@
 # coupon-analysis
 ## Overview - Will a customer accept the coupon?
+Assignment Notebook https://github.com/johnsta123/coupon-analysis/blob/main/prompt.ipynb
 
 The goal is to understand what drives a driver to accept or reject a coupon, using bar coupons and coffee house coupons as the primary case studies, and to translate those patterns into interpretable hypotheses.
 
