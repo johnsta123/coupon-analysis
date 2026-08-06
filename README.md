@@ -48,4 +48,5 @@ Acceptance rates differ meaningfully by coupon type overall, with bar and coffee
 1. Fit a logistic regression or decision tree with Y as the target to quantify the independent contribution of each feature once others are controlled for (the groupby comparisons above are confounded, since e.g. younger drivers are also more likely to be childless passengers).
 2. Repeat the same structured analysis for the remaining coupon types (Restaurant(<20), Restaurant(20-50), Carry out & Take away) to build a complete picture across all coupon categories.
 3. Consider feature engineering on age and income (currently stored as ordinal string bins) into numeric midpoints for use in modeling.
+4. Find the customers who accepted coupons specifically when the weather was sunny. Plot the data visualizations. - an example of a recommendations.
 
