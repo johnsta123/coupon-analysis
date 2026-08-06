@@ -17,17 +17,22 @@ Demographic features: age, maritalStatus, income, occupation, education, gender,
 ├── coupon_analysis.ipynb                # main analysis notebook
 └── README.md                     # this file
 ## Methodology
-# Data quality check — inspected shape, dtypes, and missing values.
-car was found to have a very high missing rate and was excluded from analysis rather than imputed.
+### Data quality check — inspected shape, dtypes, and missing values.
+**car** was found to have a very high missing rate and was excluded from analysis rather than imputed.
 Several trip-distance indicator columns (toCoupon_GEQ5min) were constant across all rows and carried no information.
-# Univariate exploration — visualized the distribution of coupon type and temperature using bar plots (chosen over histograms since both are effectively discrete/categorical in this dataset).
-# Bar coupon deep dive — isolated coupon == 'Bar' and computed acceptance rate under a series of increasingly specific conditions:
+### Univariate exploration 
+Visualized the distribution of coupon type and temperature using bar plots (chosen over histograms since both are effectively discrete/categorical in this dataset).
+### Bar coupon deep dive
+isolated coupon == 'Bar' and computed acceptance rate under a series of increasingly specific conditions:
 Bar-visit frequency (≤3/month vs. >3/month)
 Frequency + age > 25
 Frequency + non-kid passengers + non-farming/fishing/forestry occupation
 Compound OR conditions combining bar frequency, passenger type, marital status, age, and restaurant frequency/income
-# Coffee house coupon exploration — applied the same framework to coupon == 'Coffee House', using CoffeeHouse visit frequency, time, and passanger as candidate drivers of acceptance.
-# Comparing groups — for each condition, reported:
+### Coffee house coupon exploration
+Applied the same framework to coupon == 'Coffee House', using CoffeeHouse visit frequency, age, and passanger as candidate drivers of acceptance.
+### Comparing groups
+for each condition, reported:
 The raw acceptance rate (descriptive statistic)
 The percentage-point difference vs. the relevant baseline
-# Visualization — used bar plots, stacked/normalized bar plots, and small-multiples grids to compare accepted vs. rejected groups across multiple features at once.
+### Visualization 
+Utilized seaborn, matplotlib and Pandas visualization libraries for plotting different scenarios of Bar and Coffee House coupons. Used bar plots, countplot, stacked/normalized bar plots, and small-multiples grids to compare accepted vs. rejected groups across multiple features at once.
