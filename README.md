@@ -30,4 +30,21 @@ The raw acceptance rate (descriptive statistic)
 The percentage-point difference vs. the relevant baseline
 ### Visualization 
 Utilized seaborn, matplotlib and Pandas visualization libraries for plotting different scenarios of Bar and Coffee House coupons. Used bar plots, countplot, stacked/normalized bar plots, and small-multiples grids to compare accepted vs. rejected groups across multiple features at once.
+## Key Findings
+Bar coupons are accepted more often by drivers who already visit bars frequently (>1x/month), especially when combined with: No children as passengers Younger age (<30) Not widowed
+
+Existing habit is the strongest single predictor the coupon appears to function more as a reward for behavior the driver was already inclined toward, rather than as an incentive that changes behavior.
+
+Situational fit compounds behavioral fit conditions that make the coupon usable in the moment (no kids in the car, appropriate time of day) raise acceptance further on top of baseline habit frequency.
+
+Acceptance rates differ meaningfully by coupon type overall, with bar and coffee house coupons landing on the lower end compared to restaurant/carry-out coupons.
+
+### Data
+toCoupon_GEQ5min — usually all 1s (every trip in this dataset is ≥5 min to the coupon location). A constant column has zero variance, so it carries no information and can't help distinguish acceptance vs. rejection. Safe to drop.
+toCoupon_GEQ15min and toCoupon_GEQ25min — these do vary, and represent driving-distance thresholds. Not useless, but they overlap in information with each other (a coupon ≥25 min away is also ≥15 min away by definition) — so including both can introduce redundancy/multicollinearity if you're building a model.
+direction_same — indicates whether the coupon venue is in the same direction as the driver's current travel direction. There's typically also a direction_opp column that's just the logical inverse (direction_same = 1 - direction_opp), so keeping both is redundant — one fully determines the other.
+## Next Steps and Recommendations
+Fit a logistic regression or decision tree with Y as the target to quantify the independent contribution of each feature once others are controlled for (the groupby comparisons above are confounded, since e.g. younger drivers are also more likely to be childless passengers).
+Repeat the same structured analysis for the remaining coupon types (Restaurant(<20), Restaurant(20-50), Carry out & Take away) to build a complete picture across all coupon categories.
+Consider feature engineering on age and income (currently stored as ordinal string bins) into numeric midpoints for use in modeling.
 
